@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.boot.postgres.demo.entites.Person;
+import com.spring.boot.postgres.demo.repo.OrdersRepo;
 import com.spring.boot.postgres.demo.repo.PersonRepo;
 import com.spring.boot.postgres.demo.services.PersonSercices;
 
@@ -13,8 +14,12 @@ public class PersonServiceImpl implements PersonSercices {
 	@Autowired
 	PersonRepo personRep;
 
+	@Autowired
+	OrdersRepo ordersRepo;
+
 	@Override
 	public Person savePerson(Person person) {
 		return personRep.save(person);
 	}
+
 }

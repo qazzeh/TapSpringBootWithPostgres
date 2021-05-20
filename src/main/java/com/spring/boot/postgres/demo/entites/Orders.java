@@ -1,15 +1,13 @@
 package com.spring.boot.postgres.demo.entites;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.spring.boot.postgres.demo.beans.OrdersBean;
-import com.spring.boot.postgres.demo.beans.PersonBean;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -18,22 +16,20 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "Person")
+@Table(name = "Orders")
 @Setter
 @Getter
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor
-public class Person implements Serializable {
-	/**
-	* 
-	*/
-	private static final long serialVersionUID = 1L;
-
+public class Orders {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	private String Name;
-	private String Address;
+	private String orderName;
+	private String orderDescription;
+
+	@OneToOne
+	private Person personId;
 
 }
